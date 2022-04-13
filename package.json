@@ -1,0 +1,14 @@
+{
+  "name": "studbud",
+  "version": "1.0.0",
+  "description": "app to assist in facilitating individual study sessions",
+  "main": "index.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "author": "\u001b[A\u001b[A\u001b[A\u001b[B\u001b[B\u001b[B",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.3"
+  }
+}
