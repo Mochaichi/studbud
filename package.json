@@ -2,13 +2,19 @@
   "name": "studbud",
   "version": "1.0.0",
   "description": "app to assist in facilitating individual study sessions",
-  "main": "index.js",
   "scripts": {
-    "start": "node server.js"
+    "start": "node server.js",
+    "prestart": "parcel build ./public/index.html",
+    "dev": "parcel serve ./public/index.html"
   },
   "author": "\u001b[A\u001b[A\u001b[A\u001b[B\u001b[B\u001b[B",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.17.3"
+    "express": "^4.17.3",
+    "sass": "^1.52.1"
+  },
+  "devDependencies": {
+    "@parcel/transformer-sass": "^2.6.0",
+    "parcel": "^2.6.0"
   }
 }

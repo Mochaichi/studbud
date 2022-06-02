@@ -1,47 +1,64 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <title>StudBud</title>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <link href="style.css" rel="stylesheet" type="text/css" />
+  <link href="scss/main.scss" rel="stylesheet" />
 </head>
+
 <body>
-  <h1>StudBud</h1>
-  <form id="taskform">
-    <label for="task">Task:</label>
-    <input type="text" name="task" id="taskInput">
+  <div id="myTopnav" class="topnav">
+    <label class="logo">StudBud</label>
+    <ul>
+      <li><a href="index.html" class="active">Tasks</a></li>
+      <li><a href="timer.html">Timer</a></li>
+      <li><a href="music.html">Music</a></li>
+      <li><a href="coveyquad.html">Covey Quadrants</a></li>
+      <li><a href="timetrack.html">Flow Time Tracker</a></li>
+      <li><a href="reading.html">Reading List</a></li>
+      <li> <a href="javascript:void(0);" class="icon" onclick="navBar()"></li>
+    </ul>
+  </div>
 
-    <br>
-  <!-- Date input -->
-    <label for="dueDate">Due Date: </label>
-    <input type="date" name="dueDate" id="dueDateInput">
-    <br>
-  <!-- Time input -->
-  <label for="completionTime">Completion Time: </label>
-    <input type="time" name="completionTime" id="completionTimeInput">
+  <div id='page1' class="page-container">
+    <h1>Tasks</h1>
+    <div id="task-grid">
+      <form id="taskform">
+        <label for="task">Task:</label>
+        <input type="text" name="task" id="taskInput" required>
 
-    <br>
+        <!-- Date input -->
+        <label for="dueDate">Due Date: </label>
+        <input type="date" name="dueDate" id="dueDateInput">
 
-  <label for="estimatedTime">Estimated completion time (in mins):</label>
-  <input type="number" name="estimatedTime" id="estimatedTimeInput">
-  <!-- Priority -->
-  <br>
+        <!-- Time input -->
+        <label for="completionTime">Completion Time: </label>
+        <input type="time" name="completionTime" id="completionTimeInput">
 
-  <label for="priority">Task Priority:</label>
-  <select name="prority" id="priorityInput">
-    <option value="">Select one</option>
-    <option value="Low">Low</option>
-    <option value="Medium">Medium</option>
-    <option value="High">High</option>
-  </select>
+        <label for="estimatedTime">Estimated completion time (in mins):</label>
+        <input type="number" name="estimatedTime" id="estimatedTimeInput">
+        <!-- Priority -->
 
-  <br>
 
-    <button type="submit">Submit</button>
-  </form>
-  <ul id="tasklist">
-  </ul>
-  <script src="script.js"></script>
+        <label for="priority">Task Priority:</label>
+        <select name="prority" id="priorityInput">
+          <option value="">Select one</option>
+          <option value="Low">Low</option>
+          <option value="Medium">Medium</option>
+          <option value="High">High</option>
+        </select>
+
+        <br>
+        <button type="submit">Submit</button>
+      </form>
+      <div id="tasklist">
+        <p id="emptyList">You have not added any tasks yet.</p>
+        <ul></ul>
+      </div>
+    </div>
+  </div>
 </body>
+<script src="script.js"></script>
 </html>

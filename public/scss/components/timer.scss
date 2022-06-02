@@ -1,0 +1,60 @@
+h1 {
+  font-size: 48px;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 200;
+
+  text-align: center;
+  line-height: 59px;
+
+  padding: 0 64px;
+  margin: 0;
+}
+
+.stopwatch {
+  display: grid;
+  justify-items: center;
+  grid-row-gap: 23px;
+  width: 100%;
+  margin-top:10%;
+  padding-top: 25px;
+}
+
+.time {
+  border-style: solid;
+  border-radius: 25px;
+  border-width: 5px 40px 5px 40px;
+  background-color: rgb(255, 255, 255);
+  border-color: rgb(255, 255, 255);
+  font-family: "Roboto Mono", monospace;
+  font-weight: 300;
+  font-size: 48px;
+}
+
+.controls {
+  display: flex;
+  justify-content: space-between;
+
+  width: 187px;
+}
+
+button {
+  cursor: pointer;
+  background: transparent;
+  padding: 0;
+  border: none;
+  margin: 0;
+  outline: none;
+}
+
+.timelabel {
+  color:white;
+  text-align: center;
+}
+
+#playButton {
+  display: block;
+}
+
+#pauseButton {
+  display: none;
+}
