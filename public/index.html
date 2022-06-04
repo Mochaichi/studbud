@@ -6,10 +6,15 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <link href="scss/main.scss" rel="stylesheet" />
+  <script src="https://kit.fontawesome.com/a076d05399.js"></script>
 </head>
 
 <body>
   <div id="myTopnav" class="topnav">
+    <input type="checkbox" id="check">
+    <label for="check" class="checkbutton">
+      <i class="fas fa-bars"></i>
+    </label>
     <label class="logo">StudBud</label>
     <ul>
       <li><a href="index.html" class="active">Tasks</a></li>
@@ -18,14 +23,21 @@
       <li><a href="coveyquad.html">Covey Quadrants</a></li>
       <li><a href="timetrack.html">Flow Time Tracker</a></li>
       <li><a href="reading.html">Reading List</a></li>
-      <li> <a href="javascript:void(0);" class="icon" onclick="navBar()"></li>
-    </ul>
   </div>
 
-  <div id='page1' class="page-container">
+  <div class="card">
     <h1>Tasks</h1>
-    <div id="task-grid">
-      <form id="taskform">
+    <div id="tasklist">
+      <div class="taskItem">
+        <p id="emptyList">You have not added any tasks yet.</p>
+      </div>
+    </div>
+
+    <button class="open-button" onclick="openForm()">Add task</button>
+
+    <div id="popupForm" class="popup">
+      <button type="button" class="cancel" onclick="closeForm()">Close</button>
+      <form id="taskform" class="form-container">
         <label for="task">Task:</label>
         <input type="text" name="task" id="taskInput" required>
 
@@ -41,7 +53,6 @@
         <input type="number" name="estimatedTime" id="estimatedTimeInput">
         <!-- Priority -->
 
-
         <label for="priority">Task Priority:</label>
         <select name="prority" id="priorityInput">
           <option value="">Select one</option>
@@ -51,14 +62,12 @@
         </select>
 
         <br>
-        <button type="submit">Submit</button>
+        <button type="submit" class="button">Submit</button>
       </form>
-      <div id="tasklist">
-        <p id="emptyList">You have not added any tasks yet.</p>
-        <ul></ul>
-      </div>
     </div>
   </div>
 </body>
 <script src="script.js"></script>
+<script>tasklist();</script>
+
 </html>

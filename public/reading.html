@@ -5,9 +5,14 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1"/>
   <link href="scss/main.scss" rel="stylesheet"/>
+  <script src="https://kit.fontawesome.com/a076d05399.js"></script>
 </head>
 <body>
   <div id="myTopnav" class="topnav">
+    <input type="checkbox" id="check">
+    <label for="check" class="checkbutton">
+     <i class="fas fa-bars"></i>
+    </label>
     <label class="logo">StudBud</label>
     <ul>
       <li><a href="index.html">Tasks</a></li>
@@ -16,10 +21,10 @@
       <li><a href="coveyquad.html">Covey Quadrants</a></li>
       <li><a href="timetrack.html">Flow Time Tracker</a></li>
       <li><a href="reading.html" class="active">Reading List</a></li>
-      <li> <a href="javascript:void(0);" class="icon" onclick="navBar()"></li>
-    </ul>
   </div>
-
+  <div class="card">
+    <h1> Reading </h1>
+  </div>
 </body>
 <script src="script.js"></script>
 </html>
