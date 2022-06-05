@@ -1,121 +1,154 @@
-// Setting up variables for our HTML elements using DOM selection
-let form = document.getElementById("taskform");
-let button = document.querySelector("#taskform > button"); // Complex CSS query
+////////////////////////////////////////
+// This code runs in global scope. It gets executed when the <script> tag in the HTML is loaded.
+////////////////////////////////////////
+
+// Bind an event to the submit button to capture information from the form and store it into localStorage.
+let subButton = document.getElementById("itemsubmit");
 let tasklist = document.getElementById("tasklist");
-let taskInput = document.getElementById("taskInput");
-let dueDateInput = document.getElementById("dueDateInput");
-let completionTimeInput = document.getElementById("completionTimeInput");
-let estimatedTimeInput = document.getElementById("estimatedTimeInput");
-let priorityInput = document.getElementById("priorityInput");
 
-// Event listener for Button click
-// This could also be form.addEventListener("submit", function() {...} )
-form.addEventListener("submit", function (event) {
-    event.preventDefault(); // Not as necessary for button, but needed for form submit
-
-    let task = taskInput.value; // could be swapped out for line below
-    //let task = taskInput.value;
-
-    let date = (new Date()).toLocaleDateString('en-US') //Convert to short date format
-
-    let dueDate = (new Date(dueDateInput.value)).toLocaleDateString('en-US');
-
-    let completionTime = completionTimeInput.value;
-
-    let estimatedTime = estimatedTimeInput.value;
-
-    let priority = priorityInput.value
-
-    // Call the addTask() function using
-    addTask(task, date, dueDate, priority, completionTime, estimatedTime, false);
-
-    // Log out the newly populated taskList everytime the button has been pressed
-    console.log(taskList);
-})
-
-// Create an empty array to store our tasks
-var taskList = [];
-
-function addTask(taskDescription, createdDate, dueDate, priorityRating, completionTime, estimatedTime, completionStatus) {
-    let task = {
-        id: Date.now(),
-        taskDescription,
-        createdDate,
-        dueDate,
-        priorityRating,
-        completionTime,
-        estimatedTime,
-        completionStatus
-    };
-
-    // Add the task to our array of tasks
-    taskList.push(task);
-
-    // Separate the DOM manipulation from the object creation logic
-    renderTask(task);
+// Render the items from local storage so the page appears correct when it loads.
+renderItems();
 
 
+subButton.addEventListener("click", function () {
+
+
+  let taskName = document.getElementById("taskName").value;
+  let date = (new Date()).toLocaleDateString('en-US');
+  let dueDate = document.getElementById("dueDate").value;
+  let completionTime = document.getElementById("completionTime").value;
+  let estimatedTime = document.getElementById("estimatedTime").value;
+  let priorityRating = document.getElementById("priorityRating").value;
+
+  if (taskName == "") {
+    document.getElementById("taskName").classList.add("error");
+    return;
+  }
+
+
+  let itemObj = {
+    'taskName': taskName,
+    'dueDate': dueDate,
+    'completionTime': completionTime,
+    'estimatedTime': estimatedTime,
+    'priorityRating': priorityRating
+
+  };
+
+
+  let existingItems = getItems();
+
+  // Add the new item onto the end of the list.
+  existingItems.push(itemObj);
+
+
+  existingItems = JSON.stringify(existingItems);
+
+
+  localStorage.setItem('items', existingItems);
+
+
+  renderItems();
+
+});
+
+
+function getItems() {
+
+  let items = localStorage.getItem('items');
+
+  if (items == null) {
+    return [];
+  }
+
+  items = JSON.parse(items);
+
+  return items;
 }
 
 
-// Function to display the item on the page
-function renderTask(task) {
+function renderItems() {
 
-    updateEmpty();
+  let items = getItems();
 
+  items.forEach(function (item) {
+    
+    let taskitem = document.createElement("div");
+    taskitem.classList.add("taskItem")
 
-    let item = document.createElement("div");
-    item.classList.add("taskItem")
-    item.setAttribute("data-id", task.id);
-    item.innerHTML = "<p>" + task.taskDescription + " | " + "Created on: " + task.createdDate + " | " + "Due on: " + task.dueDate + " | " + "Priority rate: " + task.priorityRating + " | " + "Estimated time completed: " + task.estimatedTime + " minutes" + "</p>";
-    let tasklist = document.getElementById('tasklist');
-    tasklist.appendChild(item);
+    let taskName = document.createElement("span");
+    taskName.setAttribute('class', 'taskNameItem');
+    taskName.innerText = item.taskName; 
 
+    let dueDate = document.createElement("span");
+    dueDate.setAttribute('class', 'dueDateItem');
+    dueDate.innerText = item.dueDate; 
 
-    // Setup delete button DOM elements
-    let delButton = document.createElement("button");
-    let delButtonText = document.createTextNode("Delete");
-    delButton.appendChild(delButtonText);
-    item.appendChild(delButton); // Adds a delete button to every task
+    let completionTime = document.createElement("span");
+    completionTime.setAttribute('class', 'completionTimeItem');
+    completionTime.innerText = item.completionTime; 
 
-    // Listen for when the 
-    delButton.addEventListener("click", function (event) {
-        event.preventDefault();
-        let id = event.target.parentElement.getAttribute("data-id");
-        let index = taskList.findIndex(task => task.id === Number(id));
-        removeItemFromArray(taskList, index);
+    let estimatedTime = document.createElement("span");
+    estimatedTime.setAttribute('class', 'estimatedTimeItem');
+    estimatedTime.innerText = item.estimatedTime; 
+  
+    let priorityRating = document.createElement("span");
+    priorityRating.setAttribute('class', 'priorityRatingItem');
+    priorityRating.innerText = item.priorityRating; 
 
-        console.log(taskList);
+    // Add an element to represent the remove button
+    let itemRemove = document.createElement('button');
+    itemRemove.setAttribute('class', 'remove');
+    itemRemove.innerText = 'x'; // You can CSS this later to be pretty
+  
 
-        updateEmpty();
+    // Add an event handler to the remove button. To make this work properly we need to do two things. Remove the DOM element from the document _AND_ remove the correct item from the local storage list.
+    itemRemove.addEventListener("click", function () {
+      // This allows us to remove the list li element directly which takes care of the visual removal.
 
-        item.remove(); // Remove the task item from the page when button clicked
-        // Because we used 'let' to define the item, this will always delete the right element
-    })
+      taskitem.remove();
+      itemRemove.remove();
 
-    // Clear the value of the input once the task has been added to the page
-    form.reset();
+      // And the custom removeItem function helps us to remove it from local storage.
+      removeItem(item.taskName, item.dueDate, item.completionTime, item.estimatedTime, item.priorityRating);
+    });
+
+    tasklist.appendChild(taskitem);
+    taskitem.appendChild(taskName);
+    taskitem.appendChild(dueDate);
+    taskitem.appendChild(completionTime);
+    taskitem.appendChild(estimatedTime);
+    taskitem.appendChild(priorityRating);
+    taskitem.appendChild(itemRemove);
+  });
 }
 
-function removeItemFromArray(arr, index) {
-    if (index > -1) {
-        arr.splice(index, 1)
-    }
-    return arr;
-}
+// Removes a specific item, by name from local storage.
+function removeItem(taskName, dueDate, completionTime, estimatedTime, priorityRating) {
+  // Use our custom getItems() function to retrieve info from local storage. Since we need to do this in a few places, see how the custom function is more efficient?
+  let items = getItems();
 
-function updateEmpty() {
-    if (taskList.length > 0) {
-        document.getElementById("emptyList").style.display = "none";
-    } else {
-        document.getElementById("emptyList").style.display = "block";
-    }
+  // This helps us to find the array index for the item that we want to remove. It compares the information we pass in (via the itemName variable) to the information in the objects within the array. If it matches, we get a number back - i.e. items[3].
+  let itemIndex = items.findIndex(function (item) {
+    return item.taskName == taskName;
+    return item.dueDate == dueDate;
+    return item.completionTime == completionTime;
+    return item.estimatedTime == estimatedTime;
+    return item.priorityRating == priorityRating;
+  });
+
+  // We've talked about splice() in class before (https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/splice), it removes a specific item out of the array 
+  items.splice(itemIndex, 1);
+
+  // Now we do the same process of writing information back into local storage that we did earlier.
+  items = JSON.stringify(items);
+  localStorage.setItem('items', items);
 }
 
 function openForm() {
-    document.getElementById("popupForm").style.display = "block";
+  document.getElementById("popupForm").style.display = "block";
 }
 
 function closeForm() {
-    document.getElementById("popupForm").style.display = "none";
+  document.getElementById("popupForm").style.display = "none";
 }

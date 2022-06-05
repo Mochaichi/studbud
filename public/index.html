@@ -28,8 +28,10 @@
   <div class="card">
     <h1>Tasks</h1>
     <div id="tasklist">
-      <div class="taskItem">
-        <p id="emptyList">You have not added any tasks yet.</p>
+      <div class="tasklabels">
+        Task name | Due date | Completion time | Estimated finish time (mins) | Priority
+      </div>
+      <div id="taskItem">
       </div>
     </div>
 
@@ -38,32 +40,33 @@
     <div id="popupForm" class="popup">
       <button type="button" class="cancel" onclick="closeForm()">Close</button>
       <form id="taskform" class="form-container">
-        <label for="task">Task:</label>
-        <input type="text" name="task" id="taskInput" required>
-
+      
+        <label for="taskName">Task name:</label>
+        <input type="text" id="taskName" required>
+      
         <!-- Date input -->
         <label for="dueDate">Due Date: </label>
-        <input type="date" name="dueDate" id="dueDateInput">
-
+        <input type="date" id="dueDate">
+      
         <!-- Time input -->
         <label for="completionTime">Completion Time: </label>
-        <input type="time" name="completionTime" id="completionTimeInput">
-
-        <label for="estimatedTime">Estimated completion time (in mins):</label>
-        <input type="number" name="estimatedTime" id="estimatedTimeInput">
+        <input type="time" id="completionTime">
+      
+        <label for="estimatedTime">Estimated time to finish (in mins):</label>
+        <input type="number" id="estimatedTime">
         <!-- Priority -->
-
+      
         <label for="priority">Task Priority:</label>
-        <select name="prority" id="priorityInput">
+        <select name="prority" id="priorityRating">
           <option value="">Select one</option>
           <option value="Low">Low</option>
           <option value="Medium">Medium</option>
           <option value="High">High</option>
         </select>
-
+      
         <br>
-        <button type="submit" class="button">Submit</button>
-      </form>
+        <button id="itemsubmit" class="button">Submit</button>
+    </form>
     </div>
   </div>
 </body>
