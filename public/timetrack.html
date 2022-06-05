@@ -24,6 +24,7 @@
       <li><a href="timetrack.html" class="active">Flow Time Tracker</a></li>
       <li><a href="reading.html">Reading List</a></li>
   </div>
+  
   <div class="card">
     <h1>Time Tracker</h1>
     <div id="tasklist">
@@ -41,27 +42,25 @@
         <input type="text" name="task" id="taskInput" required>
 
         <!-- Time input -->
-        <label for="startTime">Start time </label>
-        <input type="time" name="startTime" id="startTimeInput">
+        <label for="startTime">Start time: </label>
+        <input type="time" id="startTimeInput">
 
         <label for="endTime">End time:</label>
-        <input type="number" name="endTime" id="endTimeInput">
+        <input type="time" id="endTimeInput">
         <!-- Priority -->
 
-        <label for="priority">Task Priority:</label>
-        <select name="prority" id="priorityInput">
-          <option value="">Select one</option>
-          <option value="Low">Low</option>
-          <option value="Medium">Medium</option>
-          <option value="High">High</option>
-        </select>
+        <label for="workTime">Work time:</label>
+        <input type="number"  id="workTimeInput">
+
+        <label for="breakTime">Break time:</label>
+        <input type="number" id="breakTimeInput">
+        
 
         <br>
-        <button type="submit" class="button">Submit</button>
+        <button id ="enterTask" type="submit" class="button">Submit</button>
       </form>
     </div>
   </div>
 </body>
-<script src="script.js"></script>
-
+<script src="scripts/timetracker.js"></script>
 </html>
