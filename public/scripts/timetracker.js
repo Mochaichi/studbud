@@ -1,10 +1,9 @@
-////////////////////////////////////////
-// This code runs in global scope. It gets executed when the <script> tag in the HTML is loaded.
-////////////////////////////////////////
 
-// Bind an event to the submit button to capture information from the form and store it into localStorage.
+//Mostly the same functionality in task list
 let subButton = document.getElementById("itemsubmit");
 let tasklist = document.getElementById("tasklist");
+
+//Retrieving info from checkboxes
 let interruptedYes = document.getElementById("interruptedYes");
 let interruptedNo = document.getElementById("interruptedNo");
 
@@ -14,8 +13,10 @@ renderItems();
 
 subButton.addEventListener("click", function () {
 
+  //Creating variable to be given a value based on the user's checkbox input
   let interruptedWork = null;
 
+  //Conditional that checks whether the checkbox has been ticked or not
   if (interruptedYes.checked == true) {
     interruptedWork = document.getElementById("interruptedYes").value;
   }
@@ -23,6 +24,7 @@ subButton.addEventListener("click", function () {
     interruptedWork = document.getElementById("interruptedNo").value;
   }
 
+  //Creating workTime variable to calculate the start and end time input from the user  
   let workTime;
 
 
@@ -32,13 +34,14 @@ subButton.addEventListener("click", function () {
   let breakTime = document.getElementById("breakTime").value;
   let endTime = document.getElementById("endTime").value;
 
-
+  //Converts the time inputs into mins
   function convertH2M(timeInHour){
     let timeParts = timeInHour.split(":");
     return Number(timeParts[0]) * 60 + Number(timeParts[1]);
   }
-  timeDifference();
 
+  timeDifference();
+  //A function that calculates the difference between two times
   function timeDifference() {
     let startTimeMin = convertH2M(startTime);
     let endTimeMin = convertH2M(endTime);
@@ -68,7 +71,7 @@ subButton.addEventListener("click", function () {
 
   let trackerExistingItems = getItems();
 
-  // Add the new item onto the end of the list.
+
   trackerExistingItems.push(trackerItemObj);
 
 
@@ -130,27 +133,17 @@ function renderItems() {
     breakTime.setAttribute('class', 'breakTimeItem');
     breakTime.innerText = item.breakTime;
 
-    // Add an element to represent the remove button
     let itemRemove = document.createElement('button');
     itemRemove.setAttribute('class', 'remove');
     itemRemove.innerText = 'x'; // You can CSS this later to be pretty
 
-    // Add an event handler to the remove button. To make this work properly we need to do two things. Remove the DOM element from the document _AND_ remove the correct item from the local storage list.
     itemRemove.addEventListener("click", function () {
-      // This allows us to remove the list li element directly which takes care of the visual removal.
 
       trackerTaskItem.remove();
       itemRemove.remove();
 
-      // And the custom removeItem function helps us to remove it from local storage.
       removeItem(item.taskName, item.startTime, item.endTime, item.interruptedWork, item.workTime, item.breakTime);
     });
-    
-    // let startTimeMin = convertH2M(item.startTime);
-    // let endTimeMin = convertH2M(item.startTime);
-
-    
-    // console.log(startTimeMin);
 
     tasklist.appendChild(trackerTaskItem);
     trackerTaskItem.appendChild(taskName);
@@ -163,12 +156,8 @@ function renderItems() {
   });
 }
 
-// Removes a specific item, by name from local storage.
 function removeItem(taskName, startTime, endTime, interruptedWork, workTime, breakTime) {
-  // Use our custom getItems() function to retrieve info from local storage. Since we need to do this in a few places, see how the custom function is more efficient?
   let trackeritems = getItems();
-
-  // This helps us to find the array index for the item that we want to remove. It compares the information we pass in (via the itemName variable) to the information in the objects within the array. If it matches, we get a number back - i.e. items[3].
   let itemIndex = trackeritems.findIndex(function (item) {
     return item.taskName == taskName;
     return item.startTime == startTime;
@@ -178,10 +167,8 @@ function removeItem(taskName, startTime, endTime, interruptedWork, workTime, bre
     return item.breakTime == breakTime;
   });
 
-  // We've talked about splice() in class before (https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/splice), it removes a specific item out of the array 
   trackeritems.splice(itemIndex, 1);
 
-  // Now we do the same process of writing information back into local storage that we did earlier.
   trackeritems = JSON.stringify(trackeritems);
   localStorage.setItem('trackeritems', trackeritems);
 }
