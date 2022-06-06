@@ -15,7 +15,7 @@ From my first design, I decided to design the website as best as I could. I did 
 
 In terms of features, they had mostly stayed the same except for the flow time tracker. I found that I had not found a good resource to implement an automatic stopwatch that saves the break time and opted for a number input instead. The form design (when the users want to input their task details) was only slightly planned with sketches, but it had not been fully considered until its creation. The initial form creation was across the screen which could have been too much for the user, so the current form design is something I am also quite satisfied with. 
 
-![Mockup](images/Mockup.png)
+![Mockup](public/images/Mockup.png)
 
 
 Overall, I am quite satisfied with what I had made despite its bad aesthetic. I would have definitely worked on the display of my website and the reading list creator if I had planned myself better. 
