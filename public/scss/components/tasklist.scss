@@ -1,16 +1,20 @@
+//Style for the entirety of the task list
 #tasklist {
     list-style: none;
 }
 
+//Style to allow some spacing between the different inputs
 .taskNameItem, .dueDateItem, .completionTimeItem, .estimatedTimeItem, .priorityRatingItem{
     padding:25px;
     font-size: 25px;
 }
 
+//Remove task button
 .remove{
     float:right;
 }
 
+//Labels that appear below the "Tasks" heading
 .tasklabels {
     background-color: #E0ECFA;
     position: relative;
@@ -25,7 +29,7 @@
     border-radius: 12px;
 }
 
-/* The popup form - hidden by default */
+// The popup form that is initially hidden until activated by the open button
 .popup {
     display: none;
     position: fixed;
@@ -36,6 +40,7 @@
     box-shadow: 2px 4px 25px rgba(0, 0, 0, .3);
 }
 
+//Styles for the button that opens up the form
 .open-button {
     display:block;
     background-color: #555;
@@ -50,7 +55,7 @@
     border-radius: 10px;
 }
 
-/* Add styles to the form container */
+// Style for the container that has all the inputs
 .form-container {
     display:block;
     max-width: 300px;
@@ -59,7 +64,7 @@
 }
 
 
-/* Full-width input fields */
+// Style to give the inputs more width
 .form-container input[type=text],
 .form-container input[type=date],
 .form-container input[type=time],
@@ -71,6 +76,7 @@
     background: #f1f1f1;
 }
 
+//Standalone style for the priority input
 select {
     width: 70%;
     padding: 16px 20px;
@@ -80,14 +86,7 @@ select {
     margin-bottom: 10px;
 }
 
-/* When the inputs get focus, do something */
-.form-container input[type=text]:focus,
-.form-container input[type=date]:focus {
-    background-color: #ddd;
-    outline: none;
-}
-
-/* Set a style for the submit/login button */
+//Style for the submit button
 .form-container button {
     background-color: #04AA6D;
     color: white;
@@ -98,7 +97,7 @@ select {
     margin-bottom: 10px;
 }
 
-/* Add a red background color to the cancel button */
+//Style for the close button
 .cancel {
     font-weight: bold;
     color:white;
@@ -108,6 +107,8 @@ select {
     background-color: red;
 }
 
+
+//Card style for each task that is entered
 .taskItem {
     font-size: 10px;
     display:block;
@@ -115,6 +116,8 @@ select {
     position: relative;
     margin-top: 10px;
     padding-top: 15px;
+    padding-left:15px;
+    padding-right: 15px;
     margin-left: 10px;
     margin-right: 10px;
     padding-bottom: 10px;
@@ -122,11 +125,7 @@ select {
     border-radius: 12px;
 }
 
-.taskItem {
-    padding-left:15px;
-    padding-right: 15px;
-}
-
+//Condition that occurs when the screen's width is below 1249px (nav bar buttons are too squished together)
 @media (max-width: 1249px) {
     .open-button {
         text-align: center;

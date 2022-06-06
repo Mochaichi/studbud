@@ -6,6 +6,9 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <link href="scss/main.scss" rel="stylesheet" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 </head>
 
@@ -27,125 +30,100 @@
   </div>
   <div class="card">
     <h1>Music Player</h1>
+
+    <!-- Div for the music player -->
     <div class="player">
-
+      <!-- Div that displays the song image, title, artist name, and controls -->
       <div class="player__header">
-
+        <!-- Div for the progress slider -->
         <div class="player__img player__img--absolute slider">
-
+          <!-- Div for the menu bar controls -->
           <button class="player__button player__button--absolute--nw playlist">
-
+            <!-- Menu bar for the music player -->
             <img src="http://physical-authority.surge.sh/imgs/icon/playlist.svg" alt="playlist-icon">
-
           </button>
 
+          <!-- Div for the music player controls -->
           <button class="player__button player__button--absolute--center play">
-
             <img src="http://physical-authority.surge.sh/imgs/icon/play.svg" alt="play-icon">
             <img src="http://physical-authority.surge.sh/imgs/icon/pause.svg" alt="pause-icon">
-
           </button>
 
+          <!-- Div for the tiny display images for each song -->
           <div class="slider__content">
-
             <img class="img slider__img" src="images/1188RikoCleanUR.png" alt="cover">
             <img class="img slider__img" src="images/2944RinCleanUR.png" alt="cover">
             <img class="img slider__img" src="images/2199RinCleanUR.png" alt="cover">
-
           </div>
-
         </div>
 
+        <!-- Music player controls -->
         <div class="player__controls">
-
+          <!-- Button for previous song -->
           <button class="player__button back">
-
             <img class="img" src="http://physical-authority.surge.sh/imgs/icon/back.svg" alt="back-icon">
-
           </button>
 
+          <!-- Song information in the player -->
           <p class="player__context slider__context">
-
             <strong class="slider__name"></strong>
             <span class="player__title slider__title"></span>
-
           </p>
 
+          <!-- Button for next song -->
           <button class="player__button next">
-
             <img class="img" src="http://physical-authority.surge.sh/imgs/icon/next.svg" alt="next-icon">
-
           </button>
 
+          <!-- Div for when the progress bar is at max -->
           <div class="progres">
-
             <div class="progres__filled"></div>
-
           </div>
 
         </div>
 
       </div>
 
+      <!-- Displaying playlist -->
       <ul class="player__playlist list">
 
+        <!-- First song -->
         <li class="player__song">
-
           <img class="player__img img" src="images/2944RinCleanUR.png" alt="cover">
-
           <p class="player__context">
-
             <b class="player__song-name">Snow Halation</b>
             <span class="flex">
-
               <span class="player__title">µ's </span>
               <span class="player__song-time"></span>
-
             </span>
-
           </p>
-
           <audio class="audio" src="music/Snow_halation.mp3"></audio>
-
         </li>
-
+        
+        <!-- Second song -->
         <li class="player__song">
           <img class="player__img img" src="images/1188RikoCleanUR.png" alt="cover">
-
           <p class="player__context">
-
             <b class="player__song-name">New Romantic Sailors</b>
             <span class="flex">
-
               <span class="player__title">Guilty Kiss</span>
               <span class="player__song-time"></span>
-
             </span>
-
           </p>
-
           <audio class="audio" src="music/New_Romantic_Sailors.mp3"></audio>
-
         </li>
 
+        <!-- Third song -->
         <li class="player__song">
-
           <img class="player__img img" src="images/2199RinCleanUR.png" alt="cover">
-
           <p class="player__context">
-
             <b class="player__song-name">Soldier Game</b>
             <span class="flex">
-
               <span class="player__title">µ's</span>
               <span class="player__song-time"></span>
-
             </span>
-
           </p>
-
           <audio class="audio" src="music/Soldier_Game.mp3"></audio>
-
         </li>
 
       </ul>

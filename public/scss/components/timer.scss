@@ -1,13 +1,4 @@
-h1 {
-  font-size: 48px;
-
-  text-align: center;
-  line-height: 59px;
-
-  padding: 0 64px;
-  margin: 0;
-}
-
+//Styling for the stopwatch
 .stopwatch {
   display: grid;
   justify-items: center;
@@ -18,6 +9,7 @@ h1 {
   padding-top: 25px;
 }
 
+//Styling for the stopwatch display (00:00:00)
 .time {
   border-style: solid;
   border-radius: 25px;
@@ -27,13 +19,14 @@ h1 {
   font-size: 48px;
 }
 
+//Styling for the stopwatch controls
 .controls {
   display: flex;
   justify-content: space-between;
-
   width: 187px;
 }
 
+//Styling for all the buttons
 button {
   cursor: pointer;
   background: transparent;
@@ -43,22 +36,26 @@ button {
   outline: none;
 }
 
+//Styling for the labels under the stopwatch display
 .timelabel {
   color:black;
   font-weight: bold;
   text-align: center;
 }
 
+//Styling for the play button
 #playButton {
   display: block;
   font-size: 56px;
 }
 
+//Styling for the pauce button
 #pauseButton {
   display: none;
   font-size: 56px;
 }
 
+//Styling for the reset button
 #resetButton{
   font-size:56px;
 }

@@ -1,3 +1,4 @@
+//Grid display for the quadrants
 .container {  display: grid;
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 1.4fr 1.3fr;
@@ -16,6 +17,7 @@
   
   .quad4 { grid-area: quad4; }
 
+  //Cards for each quadrant
   .quad1, .quad2, .quad3, .quad4{
     background-color: #ffffff;
     flex-direction: column;
@@ -32,14 +34,17 @@
     border-radius: 12px;
   }
 
+  //Styling for the quadrant labels
   #quadlabels{
     align-items: center;
   }
 
+  //Removes the dots from ul
   #quadlabels ul{
     list-style: none;
   }
 
+  //Styling for the list items
   #quadlabels ul li {
     display:inline-block;
     align-items: center;
@@ -52,6 +57,7 @@
     border-width: 5px 25px 5px 25px;
   }
   
+  //Styling for each label
   .urgent{
     background-color: rgb(255, 0, 0);
     border-color: rgb(255, 0, 0);

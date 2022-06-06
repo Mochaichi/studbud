@@ -1,11 +1,7 @@
-// Designed by:  Mauricio Bucardo
-// Original image: https://dribbble.com/shots/6957353-Music-Player-Widget
-
+//Prevents undeclared variables from being used
 "use strict";
 
-// add elemnts
-const bgBody = ["#e5e7e9", "#ff4545", "#f8ded3", "#ffc382", "#f5eda6", "#ffcbdc", "#dcf3f3"];
-const body = document.body;
+//Elements
 const player = document.querySelector(".player");
 const playerHeader = player.querySelector(".player__header");
 const playerControls = player.querySelector(".player__controls");
@@ -32,7 +28,7 @@ const progres = player.querySelector(".progres");
 const progresFilled = progres.querySelector(".progres__filled");
 let isMove = false;
 
-// creat functions
+//Function for opening the player, shows song information
 function openPlayer() {
 
     playerHeader.classList.add("open-header");
@@ -41,6 +37,7 @@ function openPlayer() {
     
 }
 
+//Function for opening the player, clears song information
 function closePlayer() {
 
     playerHeader.classList.remove("open-header");
@@ -49,6 +46,7 @@ function closePlayer() {
     
 }
 
+//Function to move onto next song
 function next(index) {
     
     count = index || count;
@@ -66,6 +64,7 @@ function next(index) {
 
 }
 
+//Function to go to previous song
 function back(index) {
     
     count = index || count;
@@ -83,6 +82,7 @@ function back(index) {
 
 }
 
+//Function for when the user selects another song from the playlist
 function changeSliderContext() {
 
     sliderContext.style.animationName = "opacity";
@@ -109,10 +109,7 @@ function changeSliderContext() {
 
 }
 
-function changeBgBody() {
-    body.style.backgroundColor = bgBody[count];
-}
-
+//Function that looks at the songs available, determines whether a song should be played
 function selectSong() {
 
     song = playerSongs[count];
@@ -134,11 +131,11 @@ function selectSong() {
 function run() {
   
     changeSliderContext();
-    changeBgBody();
     selectSong();
   
 }
 
+//Function that plays or pauses a song
 function playSong() {
 
     if (song.paused) {
@@ -156,6 +153,7 @@ function playSong() {
 
 }
 
+//Function that constantly updates the song progress
 function progresUpdate() {
 
     const progresFilledWidth = (this.currentTime / this.duration) * 100 + "%";
@@ -173,12 +171,14 @@ function progresUpdate() {
 
 function scurb(e) {
 
+    //Comment from original code vvv
     // If we use e.offsetX, we have trouble setting the song time, when the mousemove is running
     const currentTime = ( (e.clientX - progres.getBoundingClientRect().left) / progres.offsetWidth ) * song.duration;
     song.currentTime = currentTime;
 
 }
 
+//Function to determine song duration
 function durationSongs() {
 
     let min = parseInt(this.duration / 60);
@@ -195,7 +195,7 @@ function durationSongs() {
 
 changeSliderContext();
 
-// add events
+//Adding event listeners
 sliderContext.addEventListener("click", openPlayer);
 sliderContext.addEventListener("animationend", () => sliderContext.style.animationName ='');
 playlistButton.addEventListener("click", closePlayer);

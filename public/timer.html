@@ -28,20 +28,24 @@
   </div>
   <div class="card">
     <h1> Timer</h1>
+    <!-- Div for the stopwatch -->
     <div class="stopwatch">
       <div class="timer">
+        <!-- Span that constantly updates the time/display on the screen -->
         <span class="time" id="display">00:00:00 </span>
-        <p class="timelabel"> hours : minutes : seconds</p>
+        <p class="timelabel"> minutes : seconds : milliseconds</p>
       </div>
 
+      <!-- Div that displays the controls for the stopwatch -->
       <div class="controls">
+        <!-- Play and pause button under the same element as one will replace the other depending on the current state -->
+        <!-- If it is running, a pause button will appear. If it is paused, a play button will appear -->
         <button class="buttonPlay">
-          
           <i id="playButton" class="material-icons">play_circle_filled</i>
           <i id="pauseButton" class="material-icons">pause_circle_filled</i>
         </button>
 
-        
+        <!-- Button that resets the timer back to 00:00:00 -->
         <button class="buttonReset">
           <i id="resetButton" class="material-icons">refresh</i>
         </button>

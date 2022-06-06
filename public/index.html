@@ -6,11 +6,17 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <link href="scss/main.scss" rel="stylesheet" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap" rel="stylesheet">
   <script src="https://kit.fontawesome.com/a076d05399.js"></script>
 </head>
 
 <body>
+  <!-- Top navigation bar -->
   <div id="myTopnav" class="topnav">
+    
+    <!-- Menu bar using a checkbox input type for smaller screens -->
     <input type="checkbox" id="check">
     <label for="check" class="checkbutton">
       <i class="fas fa-bars"></i>
@@ -26,37 +32,44 @@
     </ul>
   </div>
 
+  <!-- Card that holds information -->
   <div class="card">
     <h1>Tasks</h1>
+    <!-- Div that displays the tasks that have been inputted by the user -->
     <div id="tasklist">
       <div class="tasklabels">
         Task name | Due date | Completion time | Estimated finish time (mins) | Priority
       </div>
+      <!-- Cards that appear when new tasks are added into the LocalStorage -->
       <div id="taskItem">
       </div>
     </div>
 
+    <!-- Button to reveal a form (initially hidden) -->
     <button id="buttonOpen" class="open-button" onclick="openForm()">Add task</button>
 
+    <!-- Popup form with all the inputs that are required from the user, some may be left blank -->
     <div id="popupForm" class="popup">
       <button type="button" class="cancel" onclick="closeForm()">Close</button>
       <form id="taskform" class="form-container">
       
+        <!-- Task name input -->
         <label for="taskName">Task name:</label>
         <input type="text" id="taskName" required>
       
-        <!-- Date input -->
+        <!-- Due date input -->
         <label for="dueDate">Due Date: </label>
         <input type="date" id="dueDate">
       
-        <!-- Time input -->
+        <!-- Completion time (if the task is done) -->
         <label for="completionTime">Completion Time: </label>
         <input type="time" id="completionTime">
       
+        <!-- Estimated time for the user to finish their task -->
         <label for="estimatedTime">Estimated time to finish (in mins):</label>
         <input type="number" id="estimatedTime">
-        <!-- Priority -->
       
+        <!-- Priority level with low, medium, and high -->
         <label for="priority">Task Priority:</label>
         <select name="prority" id="priorityRating">
           <option value="">Select one</option>
@@ -66,11 +79,12 @@
         </select>
       
         <br>
+
+        <!-- Button that submits the user's inputs into the script -->
         <button id="itemsubmit" class="button">Submit</button>
     </form>
     </div>
   </div>
 </body>
 <script src="scripts/tasklist.js"></script>
-
 </html>

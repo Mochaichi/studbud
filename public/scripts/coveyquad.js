@@ -1,12 +1,17 @@
+
+//Function for when the HTML page first loads up
 function pageLoad() {
 
-    let test = document.getElementById("test");
+    //Retrieving elements for each quadrant
     let quad1 = document.getElementById("quad1");
     let quad2 = document.getElementById("quad2");
     let quad3 = document.getElementById("quad3");
     let quad4 = document.getElementById("quad4");
+
+    //Sets new date
     let date = (new Date())
 
+    //Most of the same functionality in tasklist.js
     renderItems();
     function getItems() {
 
@@ -23,7 +28,8 @@ function pageLoad() {
         let items = getItems();
 
         items.forEach(function (item) {
-
+            
+            //Calling the dateDifference to commence date subtraction once the information is retrieved
             dateDifference();
 
             let taskitem = document.createElement("div");
@@ -49,34 +55,35 @@ function pageLoad() {
             priorityRating.setAttribute('class', 'priorityRatingItem');
             priorityRating.innerText = item.priorityRating;
 
-            // Add an element to represent the remove button
             let itemRemove = document.createElement('button');
             itemRemove.setAttribute('class', 'remove');
-            itemRemove.innerText = 'x'; // You can CSS this later to be pretty
+            itemRemove.innerText = 'x';
 
 
-            // Add an event handler to the remove button. To make this work properly we need to do two things. Remove the DOM element from the document _AND_ remove the correct item from the local storage list.
             itemRemove.addEventListener("click", function () {
-                // This allows us to remove the list li element directly which takes care of the visual removal.
 
                 taskitem.remove();
                 itemRemove.remove();
 
-                // And the custom removeItem function helps us to remove it from local storage.
                 removeItem(item.taskName, item.dueDate, item.completionTime, item.estimatedTime, item.priorityRating);
             });
 
+            //Custom function to subtract the due date and today's date
             function dateDifference() {
                 let todayDate = date;
                 let duedateConvert = new Date(item.dueDate);
                 let diffTime = Math.abs(duedateConvert - todayDate);
+                //removes the time included when creating new Date();
                 let dateSubtract = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
                 return dateSubtract
 
             }
-            dateRequirement = dateDifference();
-            console.log(dateRequirement);
 
+            dateRequirement = dateDifference();
+            
+            //Conditionals for each quadrants
+            //Looks at the result from the date subtraction, priority rating, and estimated time it takes to complete task
+            //If a task falls under a condition, it will be appended into a quadrant
             if (dateRequirement < 15 && item.priorityRating == "Medium" && item.estimatedTime > 61) {
                 quad1.appendChild(taskitem);
             }
@@ -97,7 +104,6 @@ function pageLoad() {
             taskitem.appendChild(completionTime);
             taskitem.appendChild(estimatedTime);
             taskitem.appendChild(priorityRating);
-            console.log(items);
         });
     }
 }

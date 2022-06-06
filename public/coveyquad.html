@@ -9,6 +9,7 @@
   <script src="https://kit.fontawesome.com/a076d05399.js"></script>
 </head>
 
+<!-- Body element calls the pageLoad() function that loads the functions inside when the page loads -->
 <body onload=pageLoad()>
   <div id="myTopnav" class="topnav">
     <input type="checkbox" id="check">
@@ -28,15 +29,19 @@
   <div class="card">
     <h1> Convey Quadrants </h1>
 
-    <div id="test" class="container">
-
+    <!-- Container to space the 4 quadrants -->
+    <div class="container">
+      <!-- Div for quadrant 1 (top left) -->
       <div id="quad1" class="quad1">
+        <!-- Div for the labels in each quadrant -->
         <div id="quadlabels">
           <ul>
+            <!-- Labels shown in the quadrant -->
             <li class = "urgent">URGENT</li>
             <li class = "important">IMPORTANT</li>
           </ul>
         </div>
+        <!-- Div to display each task in a card -->
         <div id="taskItem">
 
         </div>
