@@ -27,7 +27,7 @@ subButton.addEventListener("click", function () {
   }
 
 
-  let itemObj = {
+  let listItemObj = {
     'taskName': taskName,
     'dueDate': dueDate,
     'completionTime': completionTime,
@@ -40,7 +40,7 @@ subButton.addEventListener("click", function () {
   let existingItems = getItems();
 
   // Add the new item onto the end of the list.
-  existingItems.push(itemObj);
+  existingItems.push(listItemObj);
 
 
   existingItems = JSON.stringify(existingItems);
