@@ -6,6 +6,7 @@
 let subButton = document.getElementById("itemsubmit");
 let tasklist = document.getElementById("tasklist");
 
+
 // Render the items from local storage so the page appears correct when it loads.
 renderItems();
 

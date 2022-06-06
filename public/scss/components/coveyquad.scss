@@ -1,0 +1,35 @@
+.container {  display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1.4fr 1.3fr;
+    gap: 0px 0px;
+    grid-auto-flow: row;
+    grid-template-areas:
+      "quad1 quad2"
+      "quad3 quad4";
+  }
+  
+  .quad1 { grid-area: quad1; }
+  
+  .quad2 { grid-area: quad2; }
+  
+  .quad3 { grid-area: quad3; }
+  
+  .quad4 { grid-area: quad4; }
+
+  .quad1, .quad2, .quad3, .quad4{
+    background-color: #E0ECFA;
+    flex-direction: column;
+    position: relative;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 15px;
+    padding: 15px;
+    margin-left: 10px;
+    margin-right: 10px;
+    box-shadow: 2px 4px 25px rgba(0, 0, 0, .5);
+    border-radius: 12px;
+  }
+
+  
+  
