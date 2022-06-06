@@ -9,7 +9,7 @@
   <script src="https://kit.fontawesome.com/a076d05399.js"></script>
 </head>
 
-<body onload = pageLoad()>
+<body onload=pageLoad()>
   <div id="myTopnav" class="topnav">
     <input type="checkbox" id="check">
     <label for="check" class="checkbutton">
@@ -19,35 +19,60 @@
     <ul>
       <li><a href="index.html">Tasks</a></li>
       <li><a href="timer.html">Timer</a></li>
-      <li><a href="music.html" class="active">Music</a></li>
-      <li><a href="coveyquad.html">Covey Quadrants</a></li>
+      <li><a href="music.html">Music</a></li>
+      <li><a href="coveyquad.html" class="active">Covey Quadrants</a></li>
       <li><a href="timetrack.html">Flow Time Tracker</a></li>
       <li><a href="reading.html">Reading List</a></li>
+    </ul>
   </div>
   <div class="card">
     <h1> Convey Quadrants </h1>
 
-    <div id ="test" class="container">
+    <div id="test" class="container">
 
-      <div id= "quad1" class="quad1">
+      <div id="quad1" class="quad1">
+        <div id="quadlabels">
+          <ul>
+            <li class = "urgent">URGENT</li>
+            <li class = "important">IMPORTANT</li>
+          </ul>
+        </div>
         <div id="taskItem">
 
         </div>
       </div>
 
-      <div id= "quad2" class="quad2">
+      <div id="quad2" class="quad2">
+        <div id="quadlabels">
+          <ul>
+            <li class = "notUrgent">NOT URGENT</li>
+            <li class = "important">IMPORTANT</li>
+          </ul>
+        </div>
         <div id="taskItem">
 
         </div>
       </div>
 
-      <div id= "quad3" class="quad3">
+      <div id="quad3" class="quad3">
+        <div id="quadlabels">
+          <ul>
+            <li class = "urgent">URGENT</li>
+            <li class = "notImportant">NOT IMPORTANT</li>
+          </ul>
+        </div>
         <div id="taskItem">
 
         </div>
       </div>
 
-      <div id= "quad4" class="quad4">
+      <div id="quad4" class="quad4">
+        <div id="quadlabels">
+          <ul>
+            <li class = "notUrgent">NOT URGENT</li>
+            <li class = "notImportant">NOT IMPORTANT</li>
+          </ul>
+        </div>
         <div id="taskItem">
 
         </div>
@@ -55,5 +80,6 @@
     </div>
   </div>
 </body>
-<script src="scripts/coveyquad test.js"></script>
+<script src="scripts/coveyquad.js"></script>
+
 </html>

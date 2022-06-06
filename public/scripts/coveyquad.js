@@ -1,7 +1,12 @@
 function pageLoad() {
-    
+
     let test = document.getElementById("test");
     let quad1 = document.getElementById("quad1");
+    let quad2 = document.getElementById("quad2");
+    let quad3 = document.getElementById("quad3");
+    let quad4 = document.getElementById("quad4");
+    let date = (new Date())
+
     renderItems();
     function getItems() {
 
@@ -18,6 +23,8 @@ function pageLoad() {
         let items = getItems();
 
         items.forEach(function (item) {
+
+            dateDifference();
 
             let taskitem = document.createElement("div");
             taskitem.classList.add("taskItem")
@@ -59,12 +66,38 @@ function pageLoad() {
                 removeItem(item.taskName, item.dueDate, item.completionTime, item.estimatedTime, item.priorityRating);
             });
 
-            quad1.appendChild(taskitem);
+            function dateDifference() {
+                let todayDate = date;
+                let duedateConvert = new Date(item.dueDate);
+                let diffTime = Math.abs(duedateConvert - todayDate);
+                let dateSubtract = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+                return dateSubtract
+
+            }
+            dateRequirement = dateDifference();
+            console.log(dateRequirement);
+
+            if (dateRequirement < 15 && item.priorityRating == "Medium" && item.estimatedTime > 61) {
+                quad1.appendChild(taskitem);
+            }
+
+            else if (dateRequirement > 15 && (item.priorityRating == "Medium" || item.priorityRating == "High") && item.estimatedTime < 61) {
+                quad2.appendChild(taskitem);
+            }
+            else if (dateRequirement < 15 && item.priorityRating == "Low" && item.estimatedTime > 61) {
+                quad3.appendChild(taskitem);
+            }
+
+            else if (dateRequirement > 15 && item.priorityRating == "Low" && item.estimatedTime < 61) {
+                quad4.appendChild(taskitem);
+            }
+
             taskitem.appendChild(taskName);
             taskitem.appendChild(dueDate);
             taskitem.appendChild(completionTime);
             taskitem.appendChild(estimatedTime);
             taskitem.appendChild(priorityRating);
+            console.log(items);
         });
     }
 }
